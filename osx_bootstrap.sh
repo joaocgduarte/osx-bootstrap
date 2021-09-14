@@ -10,7 +10,7 @@
 # - Newton (app store)
 # - ClipMenu
 # - Asana
-# - Git commitizen (cz) and go mockery generators
+# - go mockery generators
 #
 # Notes:
 #
@@ -66,8 +66,8 @@ brew install bash
 
 
 PACKAGES=(
-	awscli
 	aws-elasticbeanstalk
+	awscli
 	bash-completion
 	bash-git-prompt
 	cask
@@ -78,12 +78,12 @@ PACKAGES=(
 	jq
 	kubernetes-cli
 	kubernetes-helm
+	nvm
 	pandoc
-    nvm
 	python3
 	ssh-copy-id
-	terraform
 	terminal-notifier
+	terraform
 	the_silver_searcher
 	thefuck
 	tree
@@ -108,10 +108,14 @@ brew tap caskroom/cask
 CASKS=(
 	appcleaner
 	appzapper
+	balenaetcher
+	bitwarden
+	brave
 	cakebrew
 	cyberduck
 	docker
 	firefox
+	flux
 	flycut
 	github
 	gitter
@@ -119,22 +123,18 @@ CASKS=(
 	iterm2
 	keybase
 	microsoft-teams
+	postman
 	qlstephen
+	rectangle
 	sequel-pro
 	simplenote
 	slack
 	spotify
 	spotify-notifications
+	tunnelblick
+	veracrypt
 	visual-studio-code
-    balenaetcher
-    bitwarden
-    brave
-    flux
-    postman
-    rectangle
-    tunnelblick
-    veracrypt
-    vlc
+	vlc
 )
 
 echo_ok "Installing cask apps..."
@@ -160,13 +160,20 @@ FONTS=(
 	font-liberation-mono-for-powerline
 	font-menlo-for-powerline
 	font-roboto
-    font-source-code-pro
-    font-source-code-pro-for-powerline
+	font-source-code-pro
+	font-source-code-pro-for-powerline
 )
 brew cask install "${FONTS[@]}"
 
 echo_ok "Installing global npm packages..."
 npm install -g spaceship-prompt
+npm install -g commitizen
+
+
+if [[ ! -f ~/.czrc ]]; then
+	touch ~/.czrc
+	echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
+fi
 
 echo_ok "Installing oh my zsh..."
 
