@@ -64,6 +64,7 @@ brew install findutils
 # Install Bash 4
 brew install bash
 
+
 PACKAGES=(
 	awscli
 	aws-elasticbeanstalk
