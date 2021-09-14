@@ -130,7 +130,7 @@ CASKS=(
     brave
     flux
     postman
-    spectacle
+    rectangle
     tunnelblick
     veracrypt
     vlc
